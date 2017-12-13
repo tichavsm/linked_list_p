@@ -109,6 +109,13 @@ int f_delete_firt(pt_list list)
     {
         if(list->first->next == NULL)
 		{
+			if(list->act == list->first)
+			{
+				list->act = NULL;
+			}
+			else
+			{;}
+
 			temp = list->first;
 			list->first = NULL;
 		}
@@ -119,6 +126,40 @@ int f_delete_firt(pt_list list)
 		}
 
 		free(temp);
+		result = 0;
+    }
+    else
+    {
+        result = 1;
+    }
+
+	return result;
+}
+
+/**
+ * Set following element as active. If list was inactive, error. If following element doesn't exist, list is now inactive.
+ * @param list
+ * @return 0 Element was successfully activated
+ * @return 1 Error occured
+ */
+int f_succ(pt_list list)
+{
+	int result;
+
+	if(list == NULL)
+    {
+        result = 1;
+        fprintf(stderr,"List wasn't initialized");
+    }
+    else if(list->active == NULL)
+    {
+        result = 1;
+		fprintf(stderr,"List is inactive");
+    }
+    else if(list->act->next != NULL)
+    {
+        list->act = list->first;
+		result = 0;
     }
     else
     {
