@@ -41,7 +41,7 @@ int f_insert_first(pt_list list,pt_element element)
     if(list == NULL)
     {
         return 1;
-        fprintf(stderr,"List wasn't initialized")
+        fprintf(stderr,"List wasn't initialized");
     }
     else if(list->first == NULL)
     {
@@ -56,21 +56,24 @@ int f_insert_first(pt_list list,pt_element element)
 }
 
 
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+    char *prog = argv[0];
+    (void)argc;
+    
 	t_list list;
 	pt_list p_list;
 
 	pt_element p_element;
 
-	p_element = f_create_element("Dokončit projekt do INP","22.12.2017", FALSE);
+	p_element = f_create_element("Dokončit projekt do INP","22.12.2017", false);
 
 	p_list = &list;
 	f_list_init(p_list);
 
 	f_insert_first(p_list, p_element);
 
-	printf("Úkol %d- Jméno: %s Datum: %s Splněno: %s\n", p_list->first->data.serial_number,p_list->first->data.name,p_list->first->data.date,"%s", (p_list->first->data.complete) ? "true" : "false");
+	printf("Úkol %d- Jméno: %s Datum: %s Splněno: %s\n", p_list->first->data.serial_number,p_list->first->data.name,p_list->first->data.date, (p_list->first->data.complete) ? "true" : "false");
 
 	return 0;
 }
