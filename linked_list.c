@@ -37,11 +37,6 @@ int f_insert_first(pt_list list,pt_element element)
     }
 }
 
-/**
- * Return value of first element
- * @param list
- * @return Value of first element
- */
 t_element f_copy_first(pt_list list)
 {
 	pt_element temp;
@@ -66,4 +61,69 @@ t_element f_copy_first(pt_list list)
     }
 
 	return *temp;
+}
+
+int f_first(pt_list list)
+{
+	int result;
+
+	if(list == NULL)
+    {
+        result = 1;
+        fprintf(stderr,"List wasn't initialized");
+    }
+    else if(list->first == NULL)
+    {
+        result = 1;
+		fprintf(stderr,"List is empty");
+    }
+    else if(list->first != NULL)
+    {
+        list->act = list->first;
+		result = 0;
+    }
+    else
+    {
+        result = 1;
+    }
+
+	return result;
+}
+
+int f_delete_firt(pt_list list)
+{
+	int result;
+	pt_element temp;
+
+	if(list == NULL)
+    {
+        result = 1;
+        fprintf(stderr,"List wasn't initialized");
+    }
+    else if(list->first == NULL)
+    {
+        result = 1;
+		fprintf(stderr,"List is empty");
+    }
+    else if(list->first != NULL)
+    {
+        if(list->first->next == NULL)
+		{
+			temp = list->first;
+			list->first = NULL;
+		}
+		else
+		{
+			temp = list->first;
+			list->first = temp->next;
+		}
+
+		free(temp);
+    }
+    else
+    {
+        result = 1;
+    }
+
+	return result;
 }

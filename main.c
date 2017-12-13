@@ -58,6 +58,11 @@ int main(int argc, char *argv[])
 
 	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", p_list->first->data.serial_number,p_list->first->data.name,p_list->first->data.date, (p_list->first->data.complete) ? "true" : "false");
 
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy_first(p_list)).data.serial_number,(f_copy_first(p_list)).data.name,(f_copy_first(p_list)).data.date, ((f_copy_first(p_list)).data.complete) ? "true" : "false");
 
+	f_delete_firt(p_list);
+
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy_first(p_list)).data.serial_number,(f_copy_first(p_list)).data.name,(f_copy_first(p_list)).data.date, ((f_copy_first(p_list)).data.complete) ? "true" : "false");
+	
 	return 0;
 }
