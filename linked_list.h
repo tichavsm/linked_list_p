@@ -30,12 +30,6 @@ typedef struct _list
 } t_list, *pt_list;
 
 /**
- * Vytvoří prvek se zadanými parametry
- * @param list
- */
-pt_element f_create_element(char *name, char date[5],bool complete);
-
-/**
  * Initialize list
  * @param list
  */
