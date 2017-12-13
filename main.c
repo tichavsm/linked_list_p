@@ -4,7 +4,7 @@
  * @file main.c
  */
 
-#include "linked_list.h"
+#include "main.h"
 
 int serial_counter = 1;
 
