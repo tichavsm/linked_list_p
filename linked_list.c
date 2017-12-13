@@ -22,7 +22,7 @@ int f_insert_first(pt_list list,pt_element element)
     else if(list->first == NULL)
     {
         list->first = element;
-		element->next = null;
+		element->next = NULL;
         return 0;
     }
     else if(list->first != NULL)
