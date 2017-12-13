@@ -17,7 +17,7 @@ int f_insert_first(pt_list list,pt_element element)
     if(list == NULL)
     {
         return 1;
-        fprintf(stderr,"List wasn't initialized");
+        fprintf(stderr,"List wasn't initialized\n");
     }
     else if(list->first == NULL)
     {
@@ -38,19 +38,19 @@ int f_insert_first(pt_list list,pt_element element)
     }
 }
 
-t_element f_copy_first(pt_list list)
+pt_element f_copy_first(pt_list list)
 {
 	pt_element temp;
 
 	if(list == NULL)
     {
         temp = NULL;
-        fprintf(stderr,"List wasn't initialized");
+        fprintf(stderr,"List wasn't initialized\n");
     }
     else if(list->first == NULL)
     {
         temp = NULL;
-		fprintf(stderr,"List is empty");
+		fprintf(stderr,"List is empty\n");
     }
     else if(list->first != NULL)
     {
@@ -60,8 +60,7 @@ t_element f_copy_first(pt_list list)
     {
         temp = NULL;
     }
-
-	return *temp;
+	    return temp;
 }
 
 int f_first(pt_list list)
@@ -71,12 +70,12 @@ int f_first(pt_list list)
 	if(list == NULL)
     {
         result = 1;
-        fprintf(stderr,"List wasn't initialized");
+        fprintf(stderr,"List wasn't initialized\n");
     }
     else if(list->first == NULL)
     {
         result = 1;
-		fprintf(stderr,"List is empty");
+		fprintf(stderr,"List is empty\n");
     }
     else if(list->first != NULL)
     {
@@ -91,7 +90,7 @@ int f_first(pt_list list)
 	return result;
 }
 
-int f_delete_firt(pt_list list)
+int f_delete_first(pt_list list)
 {
 	int result;
 	pt_element temp;
@@ -99,12 +98,12 @@ int f_delete_firt(pt_list list)
 	if(list == NULL)
     {
         result = 1;
-        fprintf(stderr,"List wasn't initialized");
+        fprintf(stderr,"List wasn't initialized\n");
     }
     else if(list->first == NULL)
     {
         result = 1;
-		fprintf(stderr,"List is empty");
+		fprintf(stderr,"List is empty\n");
     }
     else if(list->first != NULL)
     {
@@ -144,12 +143,12 @@ int f_succ(pt_list list)
 	if(list == NULL)
     {
         result = 1;
-        fprintf(stderr,"List wasn't initialized");
+        fprintf(stderr,"List wasn't initialized\n");
     }
     else if(list->act == NULL)
     {
         result = 1;
-		fprintf(stderr,"List is inactive");
+		fprintf(stderr,"List is inactive\n");
     }
     else if(list->act->next == NULL)
     {
@@ -165,10 +164,115 @@ int f_succ(pt_list list)
 	return result;
 }
 
-/**
- * Determine whether list is active
- * @param list
- * @return TRUE list is active
- * @return FALSE list is not active
- */
-bool f_active(pt_list list);
+bool f_active(pt_list list)
+{
+    bool result;
+
+	if(list->act != NULL)
+    {
+        result = true;
+    }
+    else
+    {
+        result = false;
+    }
+
+	return result;
+}
+
+int f_post_insert(pt_list list, pt_element element)
+{
+    int result;
+
+	if(list == NULL)
+    {
+        result = 1;
+        fprintf(stderr,"List wasn't initialized\n");
+    }
+    else if(list->act == NULL)
+    {
+        result = 1;
+		fprintf(stderr,"List is inactive\n");
+    }
+    else if(list->act->next == NULL)
+    {
+		list->act->next = element;
+		result = 0;
+    }
+    else
+    {
+        pt_element temp;
+		temp = list->act->next;
+        list->act->next = element;
+        element->next = temp;
+        result = 0;
+    }
+	return result;
+}
+
+int f_post_delete(pt_list list)
+{
+    int result;
+
+	if(list == NULL)
+    {
+        result = 1;
+        fprintf(stderr,"List wasn't initialized\n");
+    }
+    else if(list->act == NULL)
+    {
+        result = 1;
+		fprintf(stderr,"List is inactive\n");
+    }
+    else if(list->act->next == NULL)
+    {
+		result = 1;
+        fprintf(stderr,"Nothing to delete\n");
+    }
+    else
+    {
+        pt_element temp;
+
+        if(list->act->next->next == NULL)
+        {
+		    temp = list->act->next;
+            list->act->next = NULL;
+            result = 0;
+        }
+        else
+        {
+            temp = list->act->next;
+            list->act->next = temp->next;
+            result = 0;
+        }
+        free(temp);
+    }
+	return result;
+}
+
+pt_element f_copy(pt_list list)
+{
+	pt_element temp;
+
+	if(list == NULL)
+    {
+        temp = NULL;
+        fprintf(stderr,"List wasn't initialized\n");
+    }
+    else if(list->first == NULL)
+    {
+        temp = NULL;
+		fprintf(stderr,"List is empty\n");
+    }
+    else if(list->act == NULL)
+    {
+        temp = NULL;
+		fprintf(stderr,"List is inactive\n");
+    }
+    else
+    {
+        temp = list->act;
+    }
+
+	return temp;
+}

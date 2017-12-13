@@ -47,26 +47,47 @@ int main(int argc, char *argv[])
 	p_element = f_create_element("Dokončit projekt do INP","22.12.2017", false);
 
 	f_list_init(p_list);
-
 	f_insert_first(p_list, p_element);
-
-	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", p_list->first->data.serial_number,p_list->first->data.name,p_list->first->data.date, (p_list->first->data.complete) ? "true" : "false");
-
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy_first(p_list))->data.serial_number,(f_copy_first(p_list))->data.name,(f_copy_first(p_list))->data.date, ((f_copy_first(p_list))->data.complete) ? "true" : "false");
+	
 	p_element = f_create_element("Dokončit studium zdrojových souborů pro projekt do INP","14.12.2017", false);
-
 	f_insert_first(p_list, p_element);
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy_first(p_list))->data.serial_number,(f_copy_first(p_list))->data.name,(f_copy_first(p_list))->data.date, ((f_copy_first(p_list))->data.complete) ? "true" : "false");
 
-	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", p_list->first->data.serial_number,p_list->first->data.name,p_list->first->data.date, (p_list->first->data.complete) ? "true" : "false");
+	p_element = f_create_element("Říct Zuzance, že jí mam strašně rád","14.12.2017", false);
+	f_insert_first(p_list, p_element);
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy_first(p_list))->data.serial_number,(f_copy_first(p_list))->data.name,(f_copy_first(p_list))->data.date, ((f_copy_first(p_list))->data.complete) ? "true" : "false");
 
-	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy_first(p_list)).data.serial_number,(f_copy_first(p_list)).data.name,(f_copy_first(p_list)).data.date, ((f_copy_first(p_list)).data.complete) ? "true" : "false");
+	f_first(p_list);
 
-	f_delete_firt(p_list);
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy(p_list))->data.serial_number,(f_copy(p_list))->data.name,(f_copy(p_list))->data.date, ((f_copy(p_list))->data.complete) ? "true" : "false");
 
-	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy_first(p_list)).data.serial_number,(f_copy_first(p_list)).data.name,(f_copy_first(p_list)).data.date, ((f_copy_first(p_list)).data.complete) ? "true" : "false");
+	f_succ(p_list);
+
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy(p_list))->data.serial_number,(f_copy(p_list))->data.name,(f_copy(p_list))->data.date, ((f_copy(p_list))->data.complete) ? "true" : "false");
 	
-	f_delete_firt(p_list);
+	f_succ(p_list);
 
-	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy_first(p_list)).data.serial_number,(f_copy_first(p_list)).data.name,(f_copy_first(p_list)).data.date, ((f_copy_first(p_list)).data.complete) ? "true" : "false");
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy(p_list))->data.serial_number,(f_copy(p_list))->data.name,(f_copy(p_list))->data.date, ((f_copy(p_list))->data.complete) ? "true" : "false");
 	
+	p_element = f_create_element("Dokončit projekt do INP","22.12.2017", false);
+	f_post_insert(p_list, p_element);
+
+	f_succ(p_list);
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy(p_list))->data.serial_number,(f_copy(p_list))->data.name,(f_copy(p_list))->data.date, ((f_copy(p_list))->data.complete) ? "true" : "false");
+	
+	p_element = f_create_element("Dokončit projekt do INP","22.12.2017", false);
+	f_insert_first(p_list, p_element);
+	
+	f_first(p_list);
+
+	printf("Úkol %d - Jméno: %s Datum: %s Splněno: %s\n", (f_copy(p_list))->data.serial_number,(f_copy(p_list))->data.name,(f_copy(p_list))->data.date, ((f_copy(p_list))->data.complete) ? "true" : "false");
+
+	f_delete_first(p_list);
+	f_delete_first(p_list);
+	f_delete_first(p_list);
+	f_delete_first(p_list);
+	f_delete_first(p_list);
+
 	return 0;
 }

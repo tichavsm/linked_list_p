@@ -49,7 +49,7 @@ int f_insert_first(pt_list list,pt_element element);
  * @param list
  * @return Value of first element
  */
-t_element f_copy_first(pt_list list);
+pt_element f_copy_first(pt_list list);
 
 /**
  * Set first element as active.
@@ -65,7 +65,7 @@ int f_first(pt_list list);
  * @return 0 Element was successfully deleted
  * @return 1 Errror occured
  */
-int f_delete_firt(pt_list list);
+int f_delete_first(pt_list list);
 
 /**
  * Set following element as active. If list was inactive, error. If following element doesn't exist, list is now inactive.
@@ -96,7 +96,7 @@ int f_post_insert(pt_list list, pt_element element);
  * Delete element behind active element
  * @param list
  * @param element
- * @return 0 Element was succesfully inserted
+ * @return 0 Element was succesfully deleted
  * @return 1 Error occured
  */
 int f_post_delete(pt_list list);
@@ -107,4 +107,4 @@ int f_post_delete(pt_list list);
  * @return element
  * @return NULL None active elements
  */
-t_element f_copy(pt_list list);
+pt_element f_copy(pt_list list);

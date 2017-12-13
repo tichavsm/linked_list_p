@@ -6,6 +6,8 @@
 
 #include "linked_list.h"
 
+extern int serial_counter;
+
 /**
  * Vytvoří prvek se zadanými parametry
  * @param list
