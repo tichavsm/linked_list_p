@@ -22,6 +22,7 @@ int f_insert_first(pt_list list,pt_element element)
     else if(list->first == NULL)
     {
         list->first = element;
+		element->next = null;
         return 0;
     }
     else if(list->first != NULL)
@@ -136,12 +137,6 @@ int f_delete_firt(pt_list list)
 	return result;
 }
 
-/**
- * Set following element as active. If list was inactive, error. If following element doesn't exist, list is now inactive.
- * @param list
- * @return 0 Element was successfully activated
- * @return 1 Error occured
- */
 int f_succ(pt_list list)
 {
 	int result;
@@ -151,20 +146,29 @@ int f_succ(pt_list list)
         result = 1;
         fprintf(stderr,"List wasn't initialized");
     }
-    else if(list->active == NULL)
+    else if(list->act == NULL)
     {
         result = 1;
 		fprintf(stderr,"List is inactive");
     }
-    else if(list->act->next != NULL)
+    else if(list->act->next == NULL)
     {
-        list->act = list->first;
-		result = 0;
+		list->act = NULL;
+		result = 1;
     }
     else
     {
-        result = 1;
+		list->act = list->act->next;
+        result = 0;
     }
 
 	return result;
 }
+
+/**
+ * Determine whether list is active
+ * @param list
+ * @return TRUE list is active
+ * @return FALSE list is not active
+ */
+bool f_active(pt_list list);
