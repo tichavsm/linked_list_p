@@ -17,7 +17,7 @@ void f_list_init(pt_list list)
 pt_element f_create_element(char *name, char date[5],bool complete)
 {
     pt_element temp;
-    if((temp = (pt_element) malloc(sizeof(t_element))) == NULL)
+    if((temp = malloc(sizeof(t_element))) == NULL)
     {
     	return NULL;
     }
