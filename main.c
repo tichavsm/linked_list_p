@@ -6,6 +6,8 @@
 
 #include "linked_list.h"
 
+int serial_counter = 1;
+
 pt_element f_create_element(char *name, char date[5],bool complete)
 {
     pt_element temp;
